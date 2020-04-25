@@ -1,0 +1,42 @@
+:host {
+    display: inline-block;
+    width: 100%;
+}
+
+:host:not(.file-input-disabled) {
+    cursor: pointer;
+}
+
+.filename {
+    display: inline-block;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 100%;
+    line-height: 18px;
+    vertical-align: bottom;
+}
+
+.placeholder {
+    opacity: 0.5;
+}
+
+.file-input-floating {
+    opacity: 1;
+}
+
+.ash-drop-container {
+    width: calc(100% - 10px);
+    border: 1px solid;
+    padding: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+    border-radius: 5px;
+
+    &:hover, &.ash-dragover-input {
+        border: 2px solid !important;
+        padding: 0 !important;
+    }
+}

@@ -19,6 +19,9 @@
       "material-file-input": [
         "dist/material-file-input/material-file-input",
         "dist/material-file-input"
+      ],
+      "@angular/*": [
+        "./node_modules/@angular/*"
       ]
     }
   },

@@ -1,0 +1,22 @@
+@mixin ash-file-input-theme($theme) {
+    $warn: map-get($theme, warn);
+    $foreground: map-get($theme, foreground);
+
+    .ash-drop-container {
+        color: mat-color($foreground, secondary-text);
+        border-color: mat-color($foreground, divider) !important;
+
+        &:hover, &.ash-dragover-input {
+            border: 2px solid mat-color($foreground, base) !important;
+            padding: 0 !important;
+            transition: border-color 280ms linear;
+        }
+
+        &.ash-error {
+            border: 2px solid mat-color($warn) !important;
+            color: mat-color($warn, lighter) !important;
+            padding: 0 !important;
+        }
+    }
+
+}

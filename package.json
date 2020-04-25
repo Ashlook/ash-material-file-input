@@ -1,6 +1,29 @@
 {
   "name": "ash-material-file-input",
-  "version": "0.0.0",
+  "version": "0.9.0",
+  "license": "MIT",
+  "author": {
+    "name": "Sylvain Febvre"
+  },
+  "description": "File input component with drop feature for Angular Material",
+  "homepage": "Not yet",
+  "keywords": [
+    "angular",
+    "material",
+    "file",
+    "input",
+    "file-input",
+    "mat-form-field",
+    "drag",
+    "drop"
+  ],
+  "bugs": {
+    "url": "https://github.com/Ashlook/ash-material-file-input/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Ashlook/ash-material-file-input"
+  },
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -12,10 +35,12 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "~9.0.7",
+    "@angular/cdk": "^9.2.1",
     "@angular/common": "~9.0.7",
     "@angular/compiler": "~9.0.7",
     "@angular/core": "~9.0.7",
     "@angular/forms": "~9.0.7",
+    "@angular/material": "^9.2.1",
     "@angular/platform-browser": "~9.0.7",
     "@angular/platform-browser-dynamic": "~9.0.7",
     "@angular/router": "~9.0.7",
