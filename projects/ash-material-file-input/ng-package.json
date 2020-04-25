@@ -1,8 +1,8 @@
 {
   "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
-  "dest": "../../dist/material-file-input",
+  "dest": "../../dist/ash-material-file-input",
   "assets": [
-    "src/lib/file-input/file-input-theme.scss"
+    "src/lib/file-input/ash-file-input-theme.scss"
   ],
   "lib": {
     "entryFile": "src/index.ts"

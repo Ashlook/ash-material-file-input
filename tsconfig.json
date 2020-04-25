@@ -16,12 +16,12 @@
       "dom"
     ],
     "paths": {
-      "material-file-input": [
-        "dist/material-file-input/material-file-input",
-        "dist/material-file-input"
-      ],
       "@angular/*": [
         "./node_modules/@angular/*"
+      ],
+      "ash-material-file-input": [
+        "dist/ash-material-file-input/ash-material-file-input",
+        "dist/ash-material-file-input"
       ]
     }
   },

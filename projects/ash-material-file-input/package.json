@@ -7,7 +7,16 @@
   },
   "description": "File input component with drop feature for Angular Material",
   "homepage": "Not yet",
-  "keywords": ["angular", "material", "file", "input", "file-input", "mat-form-field", "drag", "drop"],
+  "keywords": [
+    "angular",
+    "material",
+    "file",
+    "input",
+    "file-input",
+    "mat-form-field",
+    "drag",
+    "drop"
+  ],
   "bugs": {
     "url": "https://github.com/Ashlook/ash-material-file-input/issues"
   },
@@ -15,12 +24,11 @@
     "type": "git",
     "url": "https://github.com/Ashlook/ash-material-file-input"
   },
-  "dependencies": {},
   "peerDependencies": {
-    "@angular/common": "^9.0.0",
-    "@angular/core": "^9.0.0",
-    "@angular/cdk": "9.0.0",
-    "@angular/material": "9.0.0",
+    "@angular/common": "^9.0.7",
+    "@angular/core": "^9.0.7",
+    "@angular/material": "9.2.0",
+    "@angular/cdk": "9.2.0",
     "tslib": "^1.10.0"
   }
 }
