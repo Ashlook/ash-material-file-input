@@ -1,4 +1,4 @@
-<div class="ash-drop-container" *ngIf="droppable" ashDrop (fileDropped)="_fileChange($event)"
+<div class="ash-drop-container" *ngIf="fileDrop" ashDrop (fileDropped)="_fileChange($event)"
     [style.height.px]="dropContainerHeight" dragoverClass="ash-dragover-input" [class.ash-error]="errorState">
     <ng-content select="[dropLabel]"></ng-content>
 </div>
