@@ -1,7 +1,7 @@
 import { Directive, Output, EventEmitter, HostListener, Renderer2, Input, ElementRef } from '@angular/core';
 
 @Directive({
-  selector: '[ashDroppable]'
+  selector: '[ashDrop]'
 })
 export class DropDirective {
 
