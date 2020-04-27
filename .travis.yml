@@ -26,6 +26,7 @@ jobs:
     name: "Lint"
     script:
       - ng lint ash-material-file-input
+  - stage: test
     name: "Unit tests"
     script:
       - ng test ash-material-file-input --watch false --browsers ChromeHeadless
@@ -35,6 +36,7 @@ jobs:
     name: "Build library"
     script:
       - ng build --prod ash-material-file-input
+  - stage: build
     name: "Build Example page"
     script:
         - ng build --prod example
