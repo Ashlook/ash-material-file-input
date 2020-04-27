@@ -9,7 +9,6 @@ addons:
 
 stages:
   - test
-  - build
   - deploy
 
 cache:
@@ -31,24 +30,18 @@ jobs:
     script:
       - ng test ash-material-file-input --watch false --browsers ChromeHeadless
   
-  # -- BUILD -- #
-  - stage: build
-    name: "Build library and example site"
+  # -- BUILD & DEPLOY -- #
+  - stage: deploy
+    name: "Build & deploy"
     script:
       - ng build --prod ash-material-file-input
       - ng build --prod example
     after_success:
       - echo "Build successfull - Branch($TRAVIS_BRANCH) Pull Request($TRAVIS_PULL_REQUEST) Tag($TRAVIS_TAG)"
-    
-  # -- DEPLOY -- #
-  - stage: deploy
-    name: "Deploy to github pages"
     deploy: 
       provider: pages
       local_dir: "dist/example"
       skip_cleanup: true
       github_token: $GITHUB_TOKEN
       on:
-        repo: ashlook/ash-material-file-input
         branch: master
-        tag: true
