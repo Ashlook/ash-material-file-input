@@ -24,7 +24,7 @@ const material = [
   MatDividerModule,
   MatTabsModule,
   MatCardModule
-]
+];
 
 @NgModule({
   imports: [

@@ -26,7 +26,6 @@ export class ByteFormatPipe implements PipeTransform {
     if (exp < 0) {
       return parseFloat((v / Math.pow(1024, (exp * -1))).toFixed(2)) + to;
     } else {
-      console.log(v)
       return parseFloat((v * Math.pow(1024, exp)).toFixed(2)) + to;
     }
 

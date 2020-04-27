@@ -10,7 +10,7 @@ import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 }); */
 
 @Component({
-  selector: 'test-drop',
+  selector: 'ash-test-drop',
   template: `<div ashDrop dragoverClass="test-class"></div>`,
 })
 class TestHostComponent {
@@ -39,6 +39,6 @@ fdescribe('DropDirective', () => {
   }));
 
   it('should create an instance', () => {
-    expect(directive).toBeTruthy()
-  })
-})
+    expect(directive).toBeTruthy();
+  });
+});

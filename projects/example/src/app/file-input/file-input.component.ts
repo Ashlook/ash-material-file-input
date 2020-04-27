@@ -21,7 +21,7 @@ export class FileInputComponent implements OnInit {
                 <mat-icon color="accent">publish</mat-icon> Custom label
             </label>
         </ash-mat-file-input>
-    </mat-form-field>`
+    </mat-form-field>`;
   }
 
   constructor() { }

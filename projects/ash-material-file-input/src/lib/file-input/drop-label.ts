@@ -1,6 +1,6 @@
-import { Directive } from "@angular/core";
+import { Directive } from '@angular/core';
 
 @Directive({
-  selector: "[dropLabel]",
+  selector: '[dropLabel]',
 })
-export class DropLabel { }
+export class DropLabelDirective { }

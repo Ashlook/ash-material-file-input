@@ -5,7 +5,7 @@ import { Directive, Output, EventEmitter, HostListener, Renderer2, Input, Elemen
 })
 export class DropDirective {
 
-  @Input('dragoverClass') hoverClass: string;
+  @Input() dragoverClass: string;
 
   @Output() fileDropped = new EventEmitter<FileList>();
 
@@ -15,19 +15,19 @@ export class DropDirective {
 
   @HostListener('dragenter', ['$event']) onDragEnter(evt: DragEvent) {
     this._stop(evt);
-    this._addHoverClass();
+    this._addragoverClass();
   }
 
   @HostListener('dragexit', ['$event']) onDragLeave(evt: DragEvent) {
     this._stop(evt);
-    this._removeHoverClass()
+    this._removedragoverClass();
   }
 
   @HostListener('drop', ['$event']) onDrop(evt: DragEvent) {
-    this._stop(evt)
-    this._removeHoverClass()
+    this._stop(evt);
+    this._removedragoverClass();
     const files = evt.dataTransfer.files;
-    if(files.length > 0) {
+    if (files.length > 0) {
       this.fileDropped.emit(files);
     }
   }
@@ -42,12 +42,16 @@ export class DropDirective {
     evt.stopPropagation();
   }
 
-  private _addHoverClass() {
-    this.hoverClass && this._renderer.addClass(this._hostRef.nativeElement, this.hoverClass);
+  private _addragoverClass() {
+    if (this.dragoverClass) {
+      this._renderer.addClass(this._hostRef.nativeElement, this.dragoverClass);
+    }
   }
 
-  private _removeHoverClass() {
-    this.hoverClass && this._renderer.removeClass(this._hostRef.nativeElement, this.hoverClass);
+  private _removedragoverClass() {
+    if (this.dragoverClass) {
+      this._renderer.removeClass(this._hostRef.nativeElement, this.dragoverClass);
+    }
   }
 
 }

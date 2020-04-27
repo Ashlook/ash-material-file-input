@@ -3,13 +3,13 @@ import { FileInputComponent } from './file-input/file-input.component';
 import { ByteFormatPipe } from './pipe/byte-format.pipe';
 import { DropDirective } from './directive/drop.directive';
 import { BrowserModule } from '@angular/platform-browser';
-import { DropLabel } from './file-input/drop-label';
+import { DropLabelDirective } from './file-input/drop-label';
 
 
 
 @NgModule({
-  declarations: [FileInputComponent, ByteFormatPipe, DropDirective, DropLabel],
+  declarations: [FileInputComponent, ByteFormatPipe, DropDirective, DropLabelDirective],
   imports: [BrowserModule],
-  exports: [FileInputComponent, ByteFormatPipe, DropDirective, DropLabel],
+  exports: [FileInputComponent, ByteFormatPipe, DropDirective, DropLabelDirective],
 })
 export class AshMatFileInputModule { }

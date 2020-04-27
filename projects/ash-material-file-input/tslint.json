@@ -2,15 +2,15 @@
   "extends": "../../tslint.json",
   "rules": {
     "directive-selector": [
+      "ash",
       true,
       "attribute",
-      "lib",
       "camelCase"
     ],
     "component-selector": [
+      "ash",
       true,
       "element",
-      "lib",
       "kebab-case"
     ]
   }

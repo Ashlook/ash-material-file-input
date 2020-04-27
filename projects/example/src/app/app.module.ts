@@ -16,7 +16,7 @@ import { FileInputComponent } from './file-input/file-input.component';
   declarations: [
     AppComponent,
     SideMenuComponent,
-    FileInputComponent,
+    FileInputComponent
   ],
   imports: [
     BrowserAnimationsModule,
