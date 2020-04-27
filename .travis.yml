@@ -9,7 +9,7 @@ addons:
 
 branches:
   except:
-    -develop
+    - develop
 
 stages:
   - test
