@@ -42,10 +42,22 @@ jobs:
       - ng build example --prod --base-href /ash-material-file-input/
     after_success:
       - echo "Build successfull - Branch($TRAVIS_BRANCH) Pull Request($TRAVIS_PULL_REQUEST) Tag($TRAVIS_TAG)"
+    before_deploy:
+      - zip -r9 ash-material-file-input-$TRAVIS_TAG.zip dist/ash-material-file-input
     deploy: 
-      provider: pages
-      local_dir: "dist/example"
-      skip_cleanup: true
-      github_token: $GITHUB_TOKEN
-      on:
-        branch: master
+      - provider: pages
+        local_dir: "dist/example"
+        skip_cleanup: true
+        github_token: $GITHUB_TOKEN
+        on:
+          branch: master
+          tags: true
+      - provider: release
+        skip_cleanup: true
+        api_key: $GITHUB_TOKEN
+        file_glob: true
+        file: ash-material-file-input-$TRAVIS_TAG.zip
+        draft: true
+        on:
+          branch: master
+          tags: true
