@@ -1,0 +1,18 @@
+.toolbar-title {
+    margin-left: 15px;
+}
+
+.sidenav-container {
+    width: 100%;
+    height: calc(100% - 64px);
+
+    .sidenav {
+        width: 280px;
+        padding: 15px;
+    }
+
+    .content {
+        padding: 15px 50px;
+        margin: 0 auto;
+    }
+}
