@@ -7,6 +7,10 @@ node_js:
 addons:
   chrome: stable
 
+stages:
+  - test
+  - build
+  - deploy
 
 cache:
   directories:
@@ -15,6 +19,37 @@ cache:
 install:
   - npm install
 
-script:
-  - ng lint
-  - ng test ash-material-file-input --watch false --browsers ChromeHeadless
+jobs:
+  include:
+  # -- TEST -- #
+  - stage: test
+    name: "Lint"
+    script:
+      - ng lint ash-material-file-input
+    name: "Unit tests"
+    script:
+      - ng test ash-material-file-input --watch false --browsers ChromeHeadless
+  
+  # -- BUILD -- #
+  - stage: build
+    name: "Build library"
+    script:
+      - ng build --prod ash-material-file-input
+    name: "Build Example page"
+    script:
+        - ng build --prod example
+    after_success:
+      - echo "Build successfull - Branch($TRAVIS_BRANCH) Pull Request($TRAVIS_PULL_REQUEST) Tag($TRAVIS_TAG)"
+    
+  # -- DEPLOY -- #
+  - stage: deploy
+    name: "Deploy to github pages"
+    deploy: 
+      provider: pages
+      local_dir: "dist/example"
+      skip_cleanup: true
+      github_token: $GITHUB_TOKEN
+      on:
+        repo: ashlook/ash-material-file-input
+        branch: master
+        tag: true
