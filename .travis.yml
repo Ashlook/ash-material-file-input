@@ -33,13 +33,10 @@ jobs:
   
   # -- BUILD -- #
   - stage: build
-    name: "Build library"
+    name: "Build library and example site"
     script:
       - ng build --prod ash-material-file-input
-  - stage: build
-    name: "Build Example page"
-    script:
-        - ng build --prod example
+      - ng build --prod example
     after_success:
       - echo "Build successfull - Branch($TRAVIS_BRANCH) Pull Request($TRAVIS_PULL_REQUEST) Tag($TRAVIS_TAG)"
     
