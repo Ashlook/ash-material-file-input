@@ -16,9 +16,6 @@
       "dom"
     ],
     "paths": {
-      "@angular/*": [
-        "./node_modules/@angular/*"
-      ],
       "ash-material-file-input": [
         "dist/ash-material-file-input/ash-material-file-input",
         "dist/ash-material-file-input"
