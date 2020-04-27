@@ -1,0 +1,42 @@
+@import '~@angular/material/theming';
+@import '../../../dist/ash-material-file-input/src/lib/file-input/ash-file-input.theme.scss';
+@include mat-core();
+
+$mlm-primary: mat-palette($mat-blue-grey, 600, 500, 700);
+$mlm-accent: mat-palette($mat-yellow, 800, 700, 900);
+$mlm-warn: mat-palette($mat-red);
+
+$mlm-dark-theme: mat-dark-theme($mlm-primary, $mlm-accent, $mlm-warn);
+$mlm-light-theme: mat-light-theme($mlm-primary, $mlm-accent, $mlm-warn);
+
+@mixin ash-link($theme) {
+    $accent: map-get($theme, accent);
+    $background: map-get($theme, background);
+
+    .ash-link {
+        text-decoration: unset;
+        color: mat-color($accent, darker);
+        background-color: mat-color($accent, lighter, 0.1);
+        padding: 0 4px;
+        border-radius: 3px;
+        
+        &:hover {
+            color: mat-color($accent, default);
+        }
+    }
+}
+
+@mixin custom-theme($theme) {
+    @include ash-link($theme);
+    @include ash-file-input-theme($theme);
+}
+
+
+@include angular-material-theme($mlm-light-theme);
+@include custom-theme($mlm-light-theme);
+
+.ash-dark-theme {
+    @include angular-material-theme($mlm-dark-theme);
+    @include custom-theme($mlm-dark-theme);
+}
+
