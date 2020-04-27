@@ -17,4 +17,4 @@ install:
   - npm install
 
 script:
-  - ng test -watch false --no-progress -browsers ChromeHeadless
+  - ng test --watch false --browsers ChromeHeadless
