@@ -54,7 +54,7 @@ export class FileInputComponent extends _FileInputMixinBase implements ControlVa
 
   @Input() accept: string | null = null;
   @Input() multiple: boolean = false;
-  @Input() droppable: boolean = false;
+  @Input('fileDrop') droppable: boolean = false;
   @Input() dropContainerHeight: number = 60;
 
   get empty(): boolean {
