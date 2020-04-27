@@ -1,0 +1,43 @@
+<mat-tab-group>
+    <mat-tab label="Overview">
+        <div class="tabs-content">
+            <p>
+                Ash Material File Input allow you to use file input inside a
+                <a class="ash-link" href="https://material.angular.io/components/form-field/overview">
+                    <code>&lt;mat-form-field&gt;</code>
+                </a>. It support drag and drop of file.
+            </p>
+            <mat-card>
+                <mat-card-subtitle>Basic usage</mat-card-subtitle>
+                <mat-divider></mat-divider>
+                <mat-card-content class="card-content">
+                    <form class="example-form">
+                        <mat-form-field>
+                            <mat-label>Click me to chose a file</mat-label>
+                            <ash-mat-file-input></ash-mat-file-input>
+                            <mat-icon color="accent" matSuffix>publish</mat-icon>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <mat-label>Drop a file in the container</mat-label>
+                            <ash-mat-file-input fileDrop>
+                                <label dropLabel class="example-label">
+                                    <mat-icon color="accent">publish</mat-icon> Custom label
+                                </label>
+                            </ash-mat-file-input>
+                        </mat-form-field>
+                    </form>
+                    <mat-divider></mat-divider>
+                    <pre class="example-code">
+                        <code class="prettyprint linenums">{{basicCode}}</code>
+                    </pre>
+
+
+                </mat-card-content>
+            </mat-card>
+
+
+        </div>
+    </mat-tab>
+    <mat-tab label="Api"> Content 2 </mat-tab>
+    <mat-tab label="Examples"> Content 3 </mat-tab>
+</mat-tab-group>
