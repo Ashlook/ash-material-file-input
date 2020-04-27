@@ -35,7 +35,7 @@ jobs:
     name: "Build & deploy"
     script:
       - ng build --prod ash-material-file-input
-      - ng build --prod example
+      - ng build example --prod --base-href /ash-material-file-input/
     after_success:
       - echo "Build successfull - Branch($TRAVIS_BRANCH) Pull Request($TRAVIS_PULL_REQUEST) Tag($TRAVIS_TAG)"
     deploy: 
