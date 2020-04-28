@@ -13,3 +13,36 @@ This project provides a set of tools to help you add file input into Angular Mat
 
 DEMO SITE is under construction
 
+## Install
+
+NOT PUBLISHED YET
+<!-- ```
+    npm i ash-material-file-input
+``` -->
+
+## Usage
+
+### AshFileInputModule
+
+```ts
+import { AshFileInputModule } from 'ash-material-file-input';
+```
+
+### FileInputComponent
+
+selector : `ash-mat-file-input`
+implements : [MatFormFieldControl](https://material.angular.io/components/form-field/api#MatFormFieldControl)
+
+It supports form field features, error messages, hint, prefix, suffix and appearance. You can also change when error message are shown using a custom `ErrorStateMatcher`.
+
+**Attributes**
+
+It take the
+
+| Name | Description |
+|---------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| @Input()<br>placeholder: string | Placeholder for file names, empty by default |
+| @Input()<br>accept: string | Same usage as a classic `<input type="file">` |
+| @Input()<br>multiple: boolean | Same usage as a classic `<input type="file">` |
+| fileDrop | If present, add a container above the filenames where you can drop file.<br>You can add a label inside this container by adding the `dropLabel` directive to an element inside de `<ash-mat-file-input>` |
+|  |  |
