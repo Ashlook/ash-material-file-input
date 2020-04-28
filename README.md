@@ -1,27 +1,15 @@
-# AshMaterialFileInput
+[![Build Status](https://travis-ci.com/Ashlook/ash-material-file-input.svg?branch=master)](https://travis-ci.com/Ashlook/ash-material-file-input)
+[![Coverage Status](https://coveralls.io/repos/github/Ashlook/ash-material-file-input/badge.svg?branch=master)](https://coveralls.io/github/Ashlook/ash-material-file-input?branch=master)
+[![Known Vulnerabilities](https://snyk.io/test/github/Ashlook/ash-material-file-input/badge.svg)](https://snyk.io/test/github/Ashlook/ash-material-file-input)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.7.
+# ash-material-file-input
 
-## Development server
+This project provides a set of tools to help you add file input into Angular Material forms :
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+* `ash-mat-file-input` Component, to use inside `mat-form-field`, it supports the optional dropping of file.
+* a `FileValidator` with a set of validators to use with formControl.
+* an `ashDrop` Directive, to drop files into container of your choice.
+* a `byteFormat` Pipe, to format the file size to the unit of your choice.
 
-## Code scaffolding
+DEMO SITE is under construction
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
