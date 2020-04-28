@@ -5,7 +5,7 @@ import { Directive, Output, EventEmitter, HostListener, Renderer2, Input, Elemen
 })
 export class DropDirective {
 
-  @Input() dragoverClass: string;
+  @Input() dragoverClass = 'ash-dragover';
 
   @Output() fileDropped = new EventEmitter<FileList>();
 
