@@ -19,8 +19,8 @@
                         </mat-form-field>
                         <mat-form-field>
                             <mat-label>Drop a file in the container</mat-label>
-                            <ash-mat-file-input fileDrop>
-                                <label dropLabel class="example-label">
+                            <ash-mat-file-input fileDrop [formControl]="fc">
+                                <label class="example-label">
                                     <mat-icon color="accent">publish</mat-icon>Drop here
                                 </label>
                             </ash-mat-file-input>

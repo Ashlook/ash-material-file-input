@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { FileValidators } from 'ash-material-file-input';
 
 @Component({
   selector: 'app-file-input',
@@ -23,6 +25,8 @@ export class FileInputComponent implements OnInit {
         </ash-mat-file-input>
     </mat-form-field>`;
   }
+
+  fc = new FormControl(null, FileValidators.FileExtOk('.io'));
 
   constructor() { }
 
