@@ -31,8 +31,12 @@ jobs:
       - ng lint ash-material-file-input
   - stage: test
     name: "Unit tests"
+    before_script:
+      - npm i coveralls
     script:
-      - ng test ash-material-file-input --watch false --browsers ChromeHeadless
+      - ng test ash-material-file-input --watch false --browsers ChromeHeadless  --code-coverage
+    after_success:
+      - cat ./coverage/ash-material-file-input/lcov.info | .node_modules/coveralls/bin/coveralls.js
   
   # -- BUILD & DEPLOY -- #
   - stage: deploy
