@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
-import { AshMatFileInputModule } from 'ash-material-file-input';
+import { AshFileInputModule } from 'ash-material-file-input';
 import { SharedMaterialModule } from './shared-material.module';
 import { SideMenuComponent } from './side-menu/side-menu.component';
 import { FileInputComponent } from './file-input/file-input.component';
@@ -20,7 +20,7 @@ import { FileInputComponent } from './file-input/file-input.component';
   ],
   imports: [
     BrowserAnimationsModule,
-    AshMatFileInputModule,
+    AshFileInputModule,
     ReactiveFormsModule,
     SharedMaterialModule,
     BrowserModule,

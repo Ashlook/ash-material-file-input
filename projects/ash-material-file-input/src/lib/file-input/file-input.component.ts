@@ -18,7 +18,6 @@ class FileInputBase {
 const _FileInputMixinBase: CanUpdateErrorStateCtor & typeof FileInputBase =
   mixinErrorState(FileInputBase);
 
-
 @Component({
   selector: 'ash-mat-file-input',
   templateUrl: './file-input.component.html',
@@ -84,19 +83,18 @@ export class FileInputComponent extends _FileInputMixinBase
   }
 
   @Input() accept: string | null = null;
-  @Input() multiple = false;
   @Input() fileDrop = false;
-  @Input() dropContainerHeight = 60;
+  @Input() multiple = false;
 
   @HostBinding() id = `ash-file-input-${FileInputComponent.nextId++}`;
   @HostBinding('attr.aria-describedby') describedBy = '';
 
-  @HostBinding('class.file-input-floating')
+  @HostBinding('class.ash-file-input-floating')
   get shouldLabelFloat() {
     return this.fileDrop || (this.focused || !this.empty);
   }
 
-  @HostBinding('class.file-input-disabled')
+  @HostBinding('class.ash-file-input-disabled')
   get isDisabled(): boolean {
     return this.disabled;
   }

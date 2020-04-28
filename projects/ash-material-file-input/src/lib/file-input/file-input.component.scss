@@ -7,7 +7,7 @@
     cursor: pointer;
 }
 
-.filename {
+.ash-file-input-filename {
     display: inline-block;
     text-overflow: ellipsis;
     overflow: hidden;
@@ -16,25 +16,23 @@
     vertical-align: bottom;
 }
 
-.placeholder {
+.ash-file-input-placeholder {
     opacity: 0.5;
 }
 
-.file-input-floating {
+.ash-file-input-floating {
     opacity: 1;
 }
-
 .ash-drop-container {
     width: calc(100% - 10px);
     border: 1px solid;
     padding: 1px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     margin-bottom: 10px;
     border-radius: 5px;
+    min-height: 20px;
 
-    &:hover, &.ash-dragover {
+    &:hover,
+    &.ash-dragover {
         border: 2px solid;
         padding: 0;
     }

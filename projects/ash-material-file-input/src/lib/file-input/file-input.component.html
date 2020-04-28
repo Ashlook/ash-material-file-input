@@ -1,7 +1,6 @@
-<div class="ash-drop-container" *ngIf="fileDrop" ashDrop (fileDropped)="_fileChange($event)"
-    [style.height.px]="dropContainerHeight" [class.ash-error]="errorState">
-    <ng-content select="[dropLabel]"></ng-content>
+<div class="ash-drop-container" ashDrop (fileDropped)="_fileChange($event)" *ngIf="fileDrop" [class.ash-error]="errorState">
+    <ng-content></ng-content>
 </div>
 <input type="file" hidden [accept]="accept" [multiple]="multiple">
-<span class="filename" [title]="filenames"
-    [class.placeholder]="placeholder && !filenames">{{filenames || placeholder}}</span>
+<span class="ash-file-input-filename" [title]="filenames"
+    [class.ash-file-input-placeholder]="placeholder && !filenames">{{filenames || placeholder}}</span>
