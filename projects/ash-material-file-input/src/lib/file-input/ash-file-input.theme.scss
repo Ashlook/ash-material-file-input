@@ -6,7 +6,7 @@
         color: mat-color($foreground, secondary-text);
         border-color: mat-color($foreground, divider) !important;
 
-        &:hover, &.ash-dragover-input {
+        &:hover, &.ash-dragover {
             border: 2px solid mat-color($foreground, base) !important;
             padding: 0 !important;
             transition: border-color 280ms linear;
