@@ -1,13 +1,13 @@
 import { ValidatorFn, FormControl } from '@angular/forms';
 
-// tslint:disable-next-line: no-namespace
-export namespace FileValidators {
+
+export class FileValidators {
 
   /**
    * Function to control the max size for each individual file
    * @param maxSize The max size in bytes of each file
    */
-  export function maxFileSize(maxSize: number): ValidatorFn {
+  static FileSizeMax(maxSize: number): ValidatorFn {
     return (control: FormControl): { [key: string]: any } | null => {
       const files: FileList = control.value;
       if (!files || files.length <= 0) {
@@ -33,7 +33,7 @@ export namespace FileValidators {
    * Function to control the extention of each file
    * @param accepted Accepted extensions
    */
-  export function fileExtension(accepted: string | string[]): ValidatorFn {
+  static FileExtOk(accepted: string | string[]): ValidatorFn {
     return (control: FormControl): { [key: string]: any } | null => {
       const files: FileList = control.value;
       if (!files || files.length <= 0) {
@@ -61,7 +61,7 @@ export namespace FileValidators {
    * Function to control the MIME type of each file
    * @param accepted Accepted MIME Types
    */
-  export function fileType(accepted: string | string[]): ValidatorFn {
+  static FileTypeOk(accepted: string | string[]): ValidatorFn {
     return (control: FormControl): { [key: string]: any } | null => {
       const files: FileList = control.value;
       if (!files || files.length <= 0) {
