@@ -36,7 +36,7 @@ jobs:
     script:
       - ng test ash-material-file-input --watch false --browsers ChromeHeadless  --code-coverage
     after_success:
-      - cat ./coverage/ash-material-file-input/lcov.info | .node_modules/coveralls/bin/coveralls.js
+      - cat ./coverage/ash-material-file-input/lcov.info | ./node_modules/coveralls/bin/coveralls.js
   
   # -- BUILD & DEPLOY -- #
   - stage: deploy
