@@ -34,8 +34,8 @@
     margin-bottom: 10px;
     border-radius: 5px;
 
-    &:hover, &.ash-dragover-input {
-        border: 2px solid !important;
-        padding: 0 !important;
+    &:hover, &.ash-dragover {
+        border: 2px solid;
+        padding: 0;
     }
 }
