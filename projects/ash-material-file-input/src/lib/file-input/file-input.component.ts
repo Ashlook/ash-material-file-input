@@ -119,12 +119,19 @@ export class FileInputComponent extends _FileInputMixinBase
     return '';
   }
 
+  /**
+   * Opens the file explorer for the linked input
+   */
   public open() {
     if (!this.disabled) {
       this._elementRef.nativeElement.querySelector('input').click();
     }
   }
 
+  /**
+   * Clear the input, removing his value
+   * @param event The event triggering the method
+   */
   public clear(event?: Event) {
     if (event) {
       event.stopPropagation();
