@@ -1,4 +1,7 @@
-import { Component, OnInit, ElementRef, Input, Optional, Self, OnDestroy, HostBinding, HostListener, DoCheck } from '@angular/core';
+import {
+  Component, OnInit, ElementRef, Input, Optional,
+  Self, OnDestroy, HostBinding, HostListener, DoCheck
+} from '@angular/core';
 import { ControlValueAccessor, NgControl, NgForm, FormGroupDirective } from '@angular/forms';
 import { MatFormFieldControl } from '@angular/material/form-field';
 import { Subject } from 'rxjs';
@@ -22,7 +25,9 @@ const _FileInputMixinBase: CanUpdateErrorStateCtor & typeof FileInputBase =
   selector: 'ash-mat-file-input',
   templateUrl: './file-input.component.html',
   styleUrls: ['./file-input.component.scss'],
-  providers: [{ provide: MatFormFieldControl, useExisting: FileInputComponent }],
+  providers: [
+    { provide: MatFormFieldControl, useExisting: FileInputComponent },
+  ],
 })
 export class FileInputComponent extends _FileInputMixinBase
   implements ControlValueAccessor, MatFormFieldControl<FileList>, OnInit, OnDestroy, DoCheck {
