@@ -2,7 +2,7 @@ import { Directive } from '@angular/core';
 import { NG_VALIDATORS, Validator, FormControl } from '@angular/forms';
 
 @Directive({
-  selector: 'ash-mat-file-input:not([multiple])',
+  selector: 'ash-mat-file-input:not([multiple]), ash-mat-file-input[multiple=false]',
   providers: [{ provide: NG_VALIDATORS, useExisting: NoMultipleDirective, multi: true }],
 })
 export class NoMultipleDirective implements Validator {
