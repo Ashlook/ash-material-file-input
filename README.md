@@ -70,14 +70,14 @@ control = new FormControl(null, FileValidators.acceptedExtensions('.jpg,.png'));
 ```
 control will be invalid if file extension is neither `.jpg` or `.png`.
 
-##### maxFileSize
+#### maxFileSize
 
 Requires each file to be lesser or equal to `maxSize`.
 
-**Parameters** :  
+*Parameters* :  
 `maxSize: number` - The size max of each file.
 
-**Error structure** :  
+*Error structure* :  
 ```ts
 {
     maxSize: {
@@ -88,14 +88,14 @@ Requires each file to be lesser or equal to `maxSize`.
 }
 ```
 
-##### acceptedExtensions
+#### acceptedExtensions
 
 Requires each file extension to match the one of `accepted` extensions.
 
-**Parameters** :  
+*Parameters* :  
 `accepted: string` - Accepted extensions, separated by a comma (`".jpg,.png"`).
 
-**Error structure** :
+*Error structure* :
 ```ts
 {
     extension: {
@@ -106,14 +106,14 @@ Requires each file extension to match the one of `accepted` extensions.
 }
 ```
 
-##### acceptedTypes
+#### acceptedTypes
 
 Require each file MIME type to be one of `accepted`.
 
-**Parameters** :  
+*Parameters* :  
 `accepted: string` - Accepted MIME type, separated by a comma (`"text/plain,image/*"`).
 
-**Error structure** :
+*Error structure* :
 ```ts
 {
     type: {
