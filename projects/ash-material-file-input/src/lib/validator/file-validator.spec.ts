@@ -23,7 +23,7 @@ describe('FileValidators', () => {
 
     it('should validate', () => {
       const data = new FileListMock([fileTxt, fileTxt, fileTxt]);
-      const control = new FormControl(data, [FileValidators.FileExtOk('.txt')]);
+      const control = new FormControl(data, [FileValidators.acceptedExtensions('.txt')]);
       expect(control.value).toBe(data);
       expect(control.valid).toBeTruthy();
     });
