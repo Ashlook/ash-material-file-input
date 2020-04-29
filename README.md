@@ -35,31 +35,55 @@ implements : [MatFormFieldControl](https://material.angular.io/components/form-f
 
 It supports form field features, error messages, hint, prefix, suffix and appearance. You can also change when error message are shown using a custom `ErrorStateMatcher`.
 
-**Attributes**
+#### Attributes
 
 It works with `ngModel` and `formControl` directives.  
 
 `value`: The value of the formControl is the same type ([`FileList`](https://developer.mozilla.org/en-US/docs/Web/API/FileList)) as the `<input type="file">`
  `files` attribute.
 
-| Name | Description |
-|---------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| @Input()<br>placeholder: string | Placeholder for file names, empty by default |
-| @Input()<br>accept: string | Same usage as a classic `<input type="file">` |
-| @Input()<br>multiple: boolean | Same usage as a classic `<input type="file">`<br>If not set, add a validator to avoid dropping multiple files with fileDrop |
-| fileDrop | If present, add a container above the filenames where you can drop file (default height 20px).<br>You can customize the inside of the container by adding elements inside `<ash-mat-file-input>` |
+| Name                            | Description                                                                                                                                                                                      |
+| ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| @Input()<br>placeholder: string | Placeholder for file names, empty by default                                                                                                                                                     |
+| @Input()<br>accept: string      | Same usage as a classic `<input type="file">`                                                                                                                                                    |
+| @Input()<br>multiple: boolean   | Same usage as a classic `<input type="file">`<br>If not set, add a validator to avoid dropping multiple files with fileDrop                                                                      |
+| fileDrop                        | If present, add a container above the filenames where you can drop file (default height 20px).<br>You can customize the inside of the container by adding elements inside `<ash-mat-file-input>` |
 
-**Method**
+#### Methods
 
-| `open` |
-|:--------|
+| `open`                                       |
+| :------------------------------------------- |
 | Opens the file explorer for the linked input |
 
-| `clear`|
-|:--------|
-| Clear the input, removing his value |
+| `clear`                                                 |
+| :------------------------------------------------------ |
+| Clear the input, removing his value                     |
 | @param event?: Event -- The event triggering the method |
 
 ### FileValidator
 
-A set of validators 
+A set of validators to help you manage the formControl.
+
+#### Usage
+```ts
+control = new FormControl(null, FileValidators.FileExtOk('.jpg,.png'));
+```
+control will be invalid if file extension is neither `.jpg` or `.png`.
+
+##### maxFileSize
+
+Requires each file to be lesser or equal to `maxSize`.
+
+Parameters :  
+`maxSize: number` - The size max of each file.
+
+Error structure :  
+```ts
+{
+    maxSize: {
+        max: number,        // The size max defined
+        size: string,       // The size of the first file too big
+        filename: string,   // The name of the file
+    }
+}
+```
