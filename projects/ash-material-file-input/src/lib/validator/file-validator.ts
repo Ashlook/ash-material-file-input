@@ -7,7 +7,7 @@ export class FileValidators {
    * Function to control the max size for each individual file
    * @param maxSize The max size in bytes of each file
    */
-  static FileSizeMax(maxSize: number): ValidatorFn {
+  static maxFileSize(maxSize: number): ValidatorFn {
     const fn = (control: FormControl): { [key: string]: any } | null => {
       const files: FileList = control.value;
       if (!files || files.length <= 0) {
@@ -35,7 +35,7 @@ export class FileValidators {
    * Function to control the extention of each file
    * @param accepted Accepted extensions, separated by a comma
    */
-  static FileExtOk(accepted: string): ValidatorFn {
+  static acceptedExtensions(accepted: string): ValidatorFn {
     const fn = (control: FormControl): { [key: string]: any } | null => {
       const files: FileList = control.value;
       if (!files || files.length <= 0) {
@@ -65,7 +65,7 @@ export class FileValidators {
    * Function to control the MIME type of each file
    * @param accepted Accepted MIME Types separated by a comma
    */
-  static FileTypeOk(accepted: string): ValidatorFn {
+  static acceptedTypes(accepted: string): ValidatorFn {
     const fn = (control: FormControl): { [key: string]: any } | null => {
       const files: FileList = control.value;
       if (!files || files.length <= 0) {
