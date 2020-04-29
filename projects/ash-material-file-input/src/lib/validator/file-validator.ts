@@ -48,7 +48,7 @@ export class FileValidators {
         if (!exts.includes(fileExt)) {
           return {
             extension: {
-              accepted,
+              accepted: exts.join(','),
               current: fileExt,
               filename: file.name,
             }
@@ -78,7 +78,7 @@ export class FileValidators {
         if (!isInType) {
           return {
             type: {
-              accepted,
+              accepted: types.join(','),
               current: file.type,
               filename: file.name,
             }
