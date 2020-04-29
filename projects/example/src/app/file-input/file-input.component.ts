@@ -26,7 +26,7 @@ export class FileInputComponent implements OnInit {
     </mat-form-field>`;
   }
 
-  fc = new FormControl(null, FileValidators.FileExtOk('.io'));
+  fc = new FormControl(null, FileValidators.acceptedExtensions('.io,.jpg,      .txt'));
 
   constructor() { }
 
