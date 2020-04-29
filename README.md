@@ -39,7 +39,7 @@ It supports form field features, error messages, hint, prefix, suffix and appear
 
 It works with `ngModel` and `formControl` directives.  
 
-`value`: The value of the formControl is the same type ([`FileList`](https://developer.mozilla.org/en-US/docs/Web/API/FileList)) as the `<input type="file">`
+`value`: The value of the formControl is the same type ([`FileList`](https://developer.mozilla.org/en-US/docs/Web/API/FileList)) of the `<input type="file">`
  `files` attribute.
 
 | Name                            | Description                                                                                                                                                                                      |
@@ -59,14 +59,14 @@ It works with `ngModel` and `formControl` directives.
 | :------------------------------------------------------ |
 | Clear the input, removing his value                     |
 | @param event?: Event -- The event triggering the method |
-
+---
 ### FileValidator
 
-A set of validators to help you manage the formControl.
+A set of validators to help you manage `formControl` with value of type `FileList`.
 
 #### Usage
 ```ts
-control = new FormControl(null, FileValidators.FileExtOk('.jpg,.png'));
+control = new FormControl(null, FileValidators.acceptedExtensions('.jpg,.png'));
 ```
 control will be invalid if file extension is neither `.jpg` or `.png`.
 
@@ -74,16 +74,52 @@ control will be invalid if file extension is neither `.jpg` or `.png`.
 
 Requires each file to be lesser or equal to `maxSize`.
 
-Parameters :  
+**Parameters** :  
 `maxSize: number` - The size max of each file.
 
-Error structure :  
+**Error structure** :  
 ```ts
 {
     maxSize: {
-        max: number,        // The size max defined
-        size: string,       // The size of the first file too big
-        filename: string,   // The name of the file
+        max: number,        // Size max defined
+        size: string,       // Size of the first file too big
+        filename: string,   // name of the file
+    }
+}
+```
+
+##### acceptedExtensions
+
+Requires each file extension to match the one of `accepted` extensions.
+
+**Parameters** :  
+`accepted: string` - Accepted extensions, separated by a comma (`".jpg,.png"`).
+
+**Error structure** :
+```ts
+{
+    extension: {
+        accepted: string,   // List of accepted extensions
+        current: string,    // File extension of the first file not matching
+        filename: string,   // Name of the file
+    }
+}
+```
+
+##### acceptedTypes
+
+Require each file MIME type to be one of `accepted`.
+
+**Parameters** :  
+`accepted: string` - Accepted MIME type, separated by a comma (`"text/plain,image/*"`).
+
+**Error structure** :
+```ts
+{
+    type: {
+        accepted: string,   // List of accepted types
+        current: string,    // File MIME type of the firs file not matching
+        filename: string,   // Name od the file
     }
 }
 ```
