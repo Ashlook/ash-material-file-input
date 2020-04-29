@@ -19,23 +19,21 @@ NOT PUBLISHED YET
 <!-- ```
     npm i ash-material-file-input
 ``` -->
-
-## Usage
-
-### AshFileInputModule
+---
+## AshFileInputModule
 
 ```ts
 import { AshFileInputModule } from 'ash-material-file-input';
 ```
 
-### FileInputComponent
+## FileInputComponent
 
 selector : `ash-mat-file-input`  
 implements : [MatFormFieldControl](https://material.angular.io/components/form-field/api#MatFormFieldControl)
 
 It supports form field features, error messages, hint, prefix, suffix and appearance. You can also change when error message are shown using a custom `ErrorStateMatcher`.
 
-#### Attributes
+### Attributes
 
 It works with `ngModel` and `formControl` directives.  
 
@@ -49,7 +47,7 @@ It works with `ngModel` and `formControl` directives.
 | @Input()<br>multiple: boolean   | Same usage as a classic `<input type="file">`<br>If not set, add a validator to avoid dropping multiple files with fileDrop                                                                      |
 | fileDrop                        | If present, add a container above the filenames where you can drop file (default height 20px).<br>You can customize the inside of the container by adding elements inside `<ash-mat-file-input>` |
 
-#### Methods
+### Methods
 
 | `open`                                       |
 | :------------------------------------------- |
@@ -60,24 +58,24 @@ It works with `ngModel` and `formControl` directives.
 | Clear the input, removing his value                     |
 | @param event?: Event -- The event triggering the method |
 ---
-### FileValidator
+## FileValidator
 
 A set of validators to help you manage `formControl` with value of type `FileList`.
 
-#### Usage
+### Usage
 ```ts
 control = new FormControl(null, FileValidators.acceptedExtensions('.jpg,.png'));
 ```
 control will be invalid if file extension is neither `.jpg` or `.png`.
 
-#### maxFileSize
+### maxFileSize
 
 Requires each file to be lesser or equal to `maxSize`.
 
-*Parameters* :  
+**Parameters** :  
 `maxSize: number` - The size max of each file.
 
-*Error structure* :  
+**Error structure** :  
 ```ts
 {
     maxSize: {
@@ -88,14 +86,14 @@ Requires each file to be lesser or equal to `maxSize`.
 }
 ```
 
-#### acceptedExtensions
+### acceptedExtensions
 
 Requires each file extension to match the one of `accepted` extensions.
 
-*Parameters* :  
+**Parameters** :  
 `accepted: string` - Accepted extensions, separated by a comma (`".jpg,.png"`).
 
-*Error structure* :
+**Error structure** :
 ```ts
 {
     extension: {
@@ -106,14 +104,14 @@ Requires each file extension to match the one of `accepted` extensions.
 }
 ```
 
-#### acceptedTypes
+### acceptedTypes
 
 Require each file MIME type to be one of `accepted`.
 
-*Parameters* :  
+**Parameters** :  
 `accepted: string` - Accepted MIME type, separated by a comma (`"text/plain,image/*"`).
 
-*Error structure* :
+**Error structure** :
 ```ts
 {
     type: {
