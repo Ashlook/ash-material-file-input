@@ -33,15 +33,15 @@ export class FileValidators {
 
   /**
    * Function to control the extention of each file
-   * @param accepted Accepted extensions
+   * @param accepted Accepted extensions, separated by a comma
    */
-  static FileExtOk(accepted: string | string[]): ValidatorFn {
+  static FileExtOk(accepted: string): ValidatorFn {
     const fn = (control: FormControl): { [key: string]: any } | null => {
       const files: FileList = control.value;
       if (!files || files.length <= 0) {
         return null;
       }
-      const exts = Array.isArray(accepted) ? accepted : [accepted];
+      const exts = accepted.split(',').map(ext => ext.trim());
       for (let i = 0; i < files.length; i++) {
         const file = files.item(i);
         const fileExt = '.' + file.name.split('.').pop();
@@ -63,15 +63,15 @@ export class FileValidators {
 
   /**
    * Function to control the MIME type of each file
-   * @param accepted Accepted MIME Types
+   * @param accepted Accepted MIME Types separated by a comma
    */
-  static FileTypeOk(accepted: string | string[]): ValidatorFn {
+  static FileTypeOk(accepted: string): ValidatorFn {
     const fn = (control: FormControl): { [key: string]: any } | null => {
       const files: FileList = control.value;
       if (!files || files.length <= 0) {
         return null;
       }
-      const types = Array.isArray(accepted) ? accepted : [accepted];
+      const types = accepted.split(',').map(t => t.trim());
       for (let i = 0; i < files.length; i++) {
         const file = files.item(i);
         const isInType = types.some(type => (new RegExp(type)).test(file.type));
