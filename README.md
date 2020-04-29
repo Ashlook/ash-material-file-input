@@ -52,11 +52,11 @@ It works with `ngModel` and `formControl` directives.
 **Method**
 
 | `open` |
-|--------|
+|:--------|
 | Opens the file explorer for the linked input |
 
 | `clear`|
-|--------|
+|:--------|
 | Clear the input, removing his value |
 | @param event?: Event -- The event triggering the method |
 
