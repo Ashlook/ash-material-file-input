@@ -34,7 +34,7 @@ jobs:
     before_script:
       - npm i coveralls
     script:
-      - ng test ash-material-file-input --watch false --browsers ChromeHeadless  --code-coverage
+      - ng test:lib
     after_success:
       - cat ./coverage/ash-material-file-input/lcov.info | ./node_modules/coveralls/bin/coveralls.js
   
@@ -42,8 +42,8 @@ jobs:
   - stage: deploy
     name: "Build & deploy"
     script:
-      - ng build --prod ash-material-file-input
-      - ng build example --prod --base-href /ash-material-file-input/
+      - ng build:lib
+      - ng build:example
     after_success:
       - echo "Build successfull - Branch($TRAVIS_BRANCH) Pull Request($TRAVIS_PULL_REQUEST) Tag($TRAVIS_TAG)"
     before_deploy:
