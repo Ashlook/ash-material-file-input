@@ -28,13 +28,13 @@ jobs:
   - stage: test
     name: "Lint"
     script:
-      - ng lint ash-material-file-input
+      - npm run lint:lib
   - stage: test
     name: "Unit tests"
     before_script:
       - npm i coveralls
     script:
-      - ng test:lib
+      - npm run test:lib
     after_success:
       - cat ./coverage/ash-material-file-input/lcov.info | ./node_modules/coveralls/bin/coveralls.js
   
@@ -42,8 +42,8 @@ jobs:
   - stage: deploy
     name: "Build & deploy"
     script:
-      - ng build:lib
-      - ng build:example
+      - npm run build:lib
+      - npm run build:example
     after_success:
       - echo "Build successfull - Branch($TRAVIS_BRANCH) Pull Request($TRAVIS_PULL_REQUEST) Tag($TRAVIS_TAG)"
     before_deploy:
