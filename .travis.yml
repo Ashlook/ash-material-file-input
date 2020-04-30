@@ -47,7 +47,10 @@ jobs:
     after_success:
       - echo "Build successfull - Branch($TRAVIS_BRANCH) Pull Request($TRAVIS_PULL_REQUEST) Tag($TRAVIS_TAG)"
     before_deploy:
-      - tar -cvzf ash-material-file-input-$TRAVIS_TAG.tar.gz dist/ash-material-file-input
+      - cd dist
+      - tar -cvzf ash-material-file-input.tar.gz ash-material-file-input
+      - cd ..
+      - mv dist/ash-material-file-input.tar.gz ash-material-file-input-$TRAVIS_TAG.tar.gz
     deploy: 
       - provider: pages
         local_dir: "dist/example"
@@ -62,11 +65,15 @@ jobs:
         file: ash-material-file-input-$TRAVIS_TAG.tar.gz
         on:
           branch: master
-      #- provider: npm
-       # api_token: $NPM_TOKEN
-        #email: $NPM_EMAIL
-        #edge: true
-        #cleanup: false
-        #src: ash-material-file-input-$TRAVIS_TAG.tar.gz
+          tags: true
+      - provider: npm
+        api_token: $NPM_TOKEN
+        email: $NPM_EMAIL
+        edge: true
+        cleanup: false
+        src: ash-material-file-input-$TRAVIS_TAG.tar.gz
+        on:
+          branch: master
+          tags: true
 
 
