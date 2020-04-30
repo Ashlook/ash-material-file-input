@@ -17,6 +17,11 @@ describe('ByteFormatPipe', () => {
     expect(text).toBe('100Mb');
   });
 
+  it('should only add unit if from = to', () => {
+    const text = pipe.transform(100, 'Mb', 'Mb');
+    expect(text).toBe('100Mb');
+  });
+
   it('should not tranform value other than number', () => {
     const text = pipe.transform('100Mb');
     expect(text).toBe('100Mb');
