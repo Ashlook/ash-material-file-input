@@ -59,15 +59,14 @@ jobs:
         skip_cleanup: true
         api_key: $GITHUB_TOKEN
         file_glob: true
-        file: ash-material-file-input-$TRAVIS_TAG.zip
+        file: ash-material-file-input-$TRAVIS_TAG.tar.gz
         on:
           branch: master
-          tags: true
       #- provider: npm
        # api_token: $NPM_TOKEN
         #email: $NPM_EMAIL
         #edge: true
         #cleanup: false
-        #src: 
+        #src: ash-material-file-input-$TRAVIS_TAG.tar.gz
 
 
