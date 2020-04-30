@@ -162,8 +162,10 @@ updateControl(files: FileList) {
 format: `{{ number | byteFormat [ : unitSrc [ : unitDest ] ] }}`  
 
 **Parameters** :  
-`unitSrc?: string`  - The source unit. Default is Byte.  
-`unitDest?: string` - The destination unit. Default is Megabyte.  
+`unitSrc?: string`  - The source unit. Default is `b`.  
+`unitDest?: string` - The destination unit. Default is `Mb`. 
+
+It supports unit from Byte (b) to Yottabyte (Yb).
 
 **Examples** :
 ```html
