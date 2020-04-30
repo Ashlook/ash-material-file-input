@@ -156,14 +156,14 @@ updateControl(files: FileList) {
     this.fc.markAsTouched();
 }
 ```
-
+---
 ## ByteFormatPipe
 
 format: `{{ number | byteFormat [ : unitSrc [ : unitDest ] ] }}`  
 
-**Parameters** :
-`unitSrc?: string`  - The source unit. Default is Byte.
-`unitDest?: string` - The destination unit. Default is Megabyte.
+**Parameters** :  
+`unitSrc?: string`  - The source unit. Default is Byte.  
+`unitDest?: string` - The destination unit. Default is Megabyte.  
 
 **Examples** :
 ```html
