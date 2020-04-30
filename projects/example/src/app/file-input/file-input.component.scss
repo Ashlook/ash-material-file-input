@@ -1,3 +1,5 @@
+@import "~@angular/material/theming";
+
 .tabs-content {
     padding-top: 15px;
 
@@ -30,4 +32,17 @@
     align-items: center;
     justify-content: center;
     height: 60px;
+}
+
+.test-drop {
+    height: 150px;
+    width: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @include mat-elevation-transition;
+
+    &.ash-dragover {
+        @include mat-elevation(6);
+    }
 }

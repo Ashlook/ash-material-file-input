@@ -26,11 +26,16 @@ export class FileInputComponent implements OnInit {
     </mat-form-field>`;
   }
 
-  fc = new FormControl(null, FileValidators.acceptedExtensions('.io,.jpg,      .txt'));
+  fc = new FormControl(null, FileValidators.acceptedExtensions('.jpg,      .txt'));
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  testDrop(event) {
+    this.fc.patchValue(event);
+    this.fc.markAsTouched();
   }
 
 }

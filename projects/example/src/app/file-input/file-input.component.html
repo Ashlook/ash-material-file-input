@@ -19,14 +19,19 @@
                         </mat-form-field>
                         <mat-form-field>
                             <mat-label>Drop a file in the container</mat-label>
-                            <ash-mat-file-input fileDrop [formControl]="fc">
+                            <ash-mat-file-input [formControl]="fc">
                                 <label class="example-label">
                                     <mat-icon color="accent">publish</mat-icon>Drop here
                                 </label>
                             </ash-mat-file-input>
                         </mat-form-field>
+                        <mat-card class="test-drop mat-elevation-z3" ashDrop (fileDropped)="testDrop($event)">
+                            <mat-icon color="accent">publish</mat-icon>
+                            <span>Drop your file here</span>
+                        </mat-card>
                     </form>
                     <pre>{{fc.errors | json}}</pre>
+                    <pre>{{fc.valid}}</pre>
                     <mat-divider></mat-divider>
                     <pre class="example-code">
                         <code class="prettyprint linenums">{{basicCode}}</code>
