@@ -1,31 +1,18 @@
 import { FileValidators } from './file-validator';
 import { FormControl } from '@angular/forms';
-
-class FileListMock implements FileList {
-  readonly length: number;
-  [index: number]: File;
-
-  constructor(files: File[]) {
-    files.forEach((file, i) => this[i] = file);
-    this.length = files.length;
-  }
-
-  item(index: number) {
-    return this[index];
-  }
-}
+import { FileListMock } from '../../test';
 
 describe('FileValidators', () => {
-  const fileTxt = new File(['123456'], 'text.txt', {type: 'text/plain'});
-  const filePng = new File([''], 'img.png', {type: 'image/png'});
-  const fileJpg = new File([''], 'img.jpg', {type: 'image/jpg'});
+  const fileTxt = new File(['123456'], 'text.txt', { type: 'text/plain' });
+  const filePng = new File(['1234'], 'img.png', { type: 'image/png' });
+  const fileJpg = new File([''], 'img.jpg', { type: 'image/jpg' });
 
   describe('acceptedExtensions', () => {
 
     it('should validate with no file', () => {
-       const control = new FormControl(undefined, [FileValidators.acceptedExtensions('.txt')]);
-       expect(control.value).toBe(null);
-       expect(control.valid).toBeTruthy();
+      const control = new FormControl(undefined, [FileValidators.acceptedExtensions('.txt')]);
+      expect(control.value).toBe(null);
+      expect(control.valid).toBeTruthy();
     });
 
     it('should validate', () => {
@@ -54,5 +41,87 @@ describe('FileValidators', () => {
         filename: 'img.jpg',
       });
     });
+  });
+
+  describe('maxFileSize', () => {
+
+    it('should validate with no file', () => {
+      const control = new FormControl(undefined, [FileValidators.maxFileSize(2)]);
+      expect(control.value).toBe(null);
+      expect(control.valid).toBeTruthy();
+    });
+
+    it('should validate', () => {
+      const data = new FileListMock([fileJpg, filePng, fileTxt]);
+      const control = new FormControl(data, FileValidators.maxFileSize(10));
+      expect(control.value).toBe(data);
+      expect(control.valid).toBeTruthy();
+    });
+
+    it('should validate with size lesser or equal', () => {
+      const data = new FileListMock([fileJpg, filePng, fileTxt]);
+      expect(fileTxt.size).toBe(6);
+      const control = new FormControl(data, FileValidators.maxFileSize(6));
+      expect(control.value).toBe(data);
+      expect(control.valid).toBeTruthy();
+    });
+
+    it('should not validate with "maxSize" error', () => {
+      const data = new FileListMock([fileJpg, filePng, fileTxt]);
+      const control = new FormControl(data, [FileValidators.maxFileSize(3)]);
+      expect(control.value).toBe(data);
+      expect(control.valid).toBeFalsy();
+      const sizeError = control.errors.maxSize;
+      expect(sizeError).toEqual({
+        max: 3,
+        size: 4,
+        filename: 'img.png',
+      });
+    });
+
+  });
+
+  describe('acceptedTypes', () => {
+
+    it('should validate with no file', () => {
+      const control = new FormControl(undefined, [FileValidators.acceptedTypes('image/png')]);
+      expect(control.value).toBe(null);
+      expect(control.valid).toBeTruthy();
+    });
+
+    it('should validate with [type]/[subtype]', () => {
+      const data = new FileListMock([fileTxt, fileTxt, fileTxt]);
+      const control = new FormControl(data, FileValidators.acceptedTypes('text/plain'));
+      expect(control.value).toBe(data);
+      expect(control.valid).toBeTruthy();
+    });
+
+    it('should validate with [type]/*', () => {
+      const data = new FileListMock([filePng, fileJpg, filePng]);
+      const control = new FormControl(data, FileValidators.acceptedTypes('image/*'));
+      expect(control.value).toBe(data);
+      expect(control.valid).toBeTruthy();
+    });
+
+    it('should validate with a list of mixed MIME TYPE', () => {
+      const data = new FileListMock([fileJpg, filePng, fileTxt]);
+      const control = new FormControl(data, FileValidators.acceptedTypes('text/plain,image/*'));
+      expect(control.value).toBe(data);
+      expect(control.valid).toBeTruthy();
+    });
+
+    it('should not validate with "type" error', () => {
+      const data = new FileListMock([fileJpg, filePng, fileTxt]);
+      const control = new FormControl(data, FileValidators.acceptedTypes('image/*   ,   text/pdf'));
+      expect(control.value).toBe(data);
+      expect(control.valid).toBeFalsy();
+      const typeError = control.errors.type;
+      expect(typeError).toEqual({
+        accepted: 'image/*,text/pdf',
+        current: 'text/plain',
+        filename: 'text.txt',
+      });
+    });
+
   });
 });
