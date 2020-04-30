@@ -9,7 +9,7 @@ This project provides a set of tools to help you add file input into Angular Mat
 * [`ash-mat-file-input`](#fileinputcomponent) Component, to use inside `mat-form-field`, it supports the optional dropping of file.
 * a [`FileValidator`](#filevalidators) with a set of validators to use with formControl.
 * an [`ashDrop`](#dropdirective) Directive, to drop files into container of your choice.
-* a `byteFormat` Pipe, to format the file size to the unit of your choice.
+* a [`byteFormat`](#byteformatpipe) Pipe, to format the file size to the unit of your choice.
 
 DEMO SITE is under construction
 
@@ -30,7 +30,7 @@ import { AshFileInputModule } from 'ash-material-file-input';
 selector : `ash-mat-file-input`  
 implements : [MatFormFieldControl](https://material.angular.io/components/form-field/api#MatFormFieldControl)
 
-It supports form field features, error messages, hint, prefix, suffix and appearance. You can also change when error message are shown using a custom `ErrorStateMatcher`.
+Supports form field features, error messages, hint, prefix, suffix and appearance. You can also change when error message are shown using a custom `ErrorStateMatcher`.
 
 ### Properties
 
@@ -39,12 +39,12 @@ It works with `ngModel` and `formControl` directives.
 `value`: The value of the formControl is the same type ([`FileList`](https://developer.mozilla.org/en-US/docs/Web/API/FileList)) of the `<input type="file">`
  `files` attribute.
 
-| Name                            | Description                                                                                                                                                                                      |
-| ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Name                              | Description                                                                                                                                                                                      |
+| --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | @Input()<br>placeholder: `string` | Placeholder for file names, empty by default                                                                                                                                                     |
 | @Input()<br>accept: `string`      | Same usage as a classic `<input type="file">`                                                                                                                                                    |
 | @Input()<br>multiple: `boolean`   | Same usage as a classic `<input type="file">`<br>If not set, add a validator to avoid dropping multiple files with fileDrop                                                                      |
-| fileDrop                        | If present, add a container above the filenames where you can drop file (default height 20px).<br>You can customize the inside of the container by adding elements inside `<ash-mat-file-input>` |
+| fileDrop                          | If present, add a container above the filenames where you can drop file (default height 20px).<br>You can customize the inside of the container by adding elements inside `<ash-mat-file-input>` |
 
 ### Methods
 
@@ -52,10 +52,10 @@ It works with `ngModel` and `formControl` directives.
 | :------------------------------------------- |
 | Opens the file explorer for the linked input |
 
-| `clear`                                                 |
-| :------------------------------------------------------ |
-| Clear the input, removing his value                     |
-| @param event?: Event -- The event triggering the method |
+| `clear`                                                                                                                               |
+| :------------------------------------------------------------------------------------------------------------------------------------ |
+| Clear the input, removing his value                                                                                                   |
+| @param event?: Event -- The event triggering the method <br> If set, the moethod will call `preventDefault()` and `stopPropagation()` |
 ---
 ## FileValidators
 
@@ -105,7 +105,7 @@ Requires each file extension to match the one of `accepted` extensions.
 
 ### acceptedTypes
 
-Require each file MIME type to be one of `accepted`.
+Requires each file MIME type to be one of `accepted`.
 
 **Parameters** :  
 `accepted: string` - Accepted MIME type, separated by a comma (`"text/plain,image/*"`).
@@ -125,11 +125,49 @@ Require each file MIME type to be one of `accepted`.
 
 selector: `[ashDrop]`
 
-Allow to transform any element into a drop container where you can drop files from file explorer.
+Transform any element into a drop container where you can drop files from file explorer.
 
 ### Properties
 
-| Name | Description |
-|--------------------------------------------------|---------------------------------------------------------------------------------------------------|
-| @Input()<br>dragoverClass: `string` | Name of the class to apply on the element when a file is over it.<br>(default: `'ash-dragover'`). |
-| @Output()<br>fileDropped: `EventEmitter<FileList>` | Event emitted when file(s) are dropped. |
+| Name                                               | Description                                                                                       |
+| -------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| @Input()<br>dragoverClass?: `string`               | Name of the class to apply on the element when a file is over it.<br>(default: `'ash-dragover'`). |
+| @Output()<br>fileDropped: `EventEmitter<FileList>` | Event emitted when file(s) are dropped.                                                           |
+
+---
+
+## Combining DropDirective with FileInputComponent
+
+Alternatively to use `fileDrop` attribute on `<ash-mat-file-input>` you can use any element in your component with the `ashDrop` directive to be the drop container.
+
+```html
+<mat-form-field>
+    <mat-label>Drop a file in a container anywhere</mat-label>
+    <ash-mat-file-input [formControl]="fc"></ash-mat-file-input>
+</mat-form-field>
+<!-- You can place the next element anywhere you want -->
+<mat-card ashDrop (fileDropped)="updateControl($event)">
+    Drop your file here
+</mat-card>
+```
+```ts
+updateControl(files: FileList) {
+    this.fc.patchValue(files);
+    this.fc.markAsTouched();
+}
+```
+
+## ByteFormatPipe
+
+format: `{{ number | byteFormat [ : unitSrc [ : unitDest ] ] }}`  
+
+**Parameters** :
+`unitSrc?: string`  - The source unit. Default is Byte.
+`unitDest?: string` - The destination unit. Default is Megabyte.
+
+**Examples** :
+```html
+<span>{{ 104857600 | byteFormat }}</span>           <!-- Output: "100Mb" -->
+<span>{{ 102400 | byteFormat:'Kb' }}</span>         <!-- Output: "100Mb" -->
+<span>{{ 104857600 | byteFormat:'b':'Kb' }}</span>  <!-- Output: "102400Kb" -->
+```
