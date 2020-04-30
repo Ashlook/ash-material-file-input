@@ -8,6 +8,23 @@ import {
   platformBrowserDynamicTesting
 } from '@angular/platform-browser-dynamic/testing';
 
+/**
+ * Helper to create FileList object
+ */
+export class FileListMock implements FileList {
+  readonly length: number;
+  [index: number]: File;
+
+  constructor(files: File[]) {
+    files.forEach((file, i) => this[i] = file);
+    this.length = files.length;
+  }
+
+  item(index: number) {
+    return this[index];
+  }
+}
+
 declare const require: {
   context(path: string, deep?: boolean, filter?: RegExp): {
     keys(): string[];
