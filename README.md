@@ -15,10 +15,9 @@ DEMO SITE is under construction
 
 ## Install
 
-NOT PUBLISHED YET
-<!-- ```
+```
     npm i ash-material-file-input
-``` -->
+```
 ---
 ## AshFileInputModule
 
