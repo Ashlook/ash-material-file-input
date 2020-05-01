@@ -69,7 +69,7 @@ describe('DropDirective', () => {
 
   it('should call onDragOver on dragover event', () => {
     const div = directiveElement[0].nativeElement as HTMLDivElement;
-    const spy = spyOn(mainDir, 'onDragOver');
+    const spy = spyOn(mainDir, 'onDragOver').and.callThrough();
     div.dispatchEvent(new Event('dragover'));
     fixture.detectChanges();
     expect(spy).toHaveBeenCalled();
