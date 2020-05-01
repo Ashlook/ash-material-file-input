@@ -2,5 +2,5 @@
     <ng-content></ng-content>
 </div>
 <input type="file" hidden [accept]="accept" [multiple]="multiple">
-<span class="ash-file-input-filename" [title]="filenames"
+<span class="ash-file-input-filename" [title]="filenames || placeholder"
     [class.ash-file-input-placeholder]="placeholder && !filenames">{{filenames || placeholder}}</span>
