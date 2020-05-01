@@ -2,6 +2,7 @@ import { DropDirective } from './drop.directive';
 import { Component, DebugElement } from '@angular/core';
 import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
+import { FileListMock } from '../../test';
 
 @Component({
   selector: 'ash-test-drop',
@@ -85,7 +86,7 @@ describe('DropDirective', () => {
 
   it('should emit FileList when onDrop is called', () => {
     const file = new File([''], 'test.txt');
-    const files = { 0: file, length: 1, item: (index: number) => file } as FileList;
+    const files = new FileListMock([file]);
     const spy = spyOn(mainDir.fileDropped, 'emit').and.callThrough();
     const fileDropEvent = {
       preventDefault: () => { },
@@ -97,5 +98,29 @@ describe('DropDirective', () => {
     mainDir.onDrop(fileDropEvent as DragEvent);
     expect(spy).toHaveBeenCalledWith(files);
     expect(host.files).toEqual(files);
+  });
+
+  it('should not emit if no files when onDrop is called', () => {
+    const files = new FileListMock([]);
+    const spy = spyOn(mainDir.fileDropped, 'emit').and.callThrough();
+    const fileDropEvent = {
+      preventDefault: () => { },
+      stopPropagation: () => { },
+      dataTransfer: {
+        files
+      }
+    };
+    mainDir.onDrop(fileDropEvent as DragEvent);
+    expect(spy).not.toHaveBeenCalled();
+  });
+
+  it('should not add class if there is no dragOverClass', () => {
+    const div = directiveElement[0].nativeElement as HTMLDivElement;
+    expect(mainDir.dragoverClass).toBe('test-class');
+    mainDir.dragoverClass = null;
+    div.dispatchEvent(new DragEvent('dragenter'));
+    expect(div).not.toHaveClass('test-class');
+    div.dispatchEvent(new DragEvent('dragexit'));
+    expect(div).not.toHaveClass('test-class');
   });
 });
