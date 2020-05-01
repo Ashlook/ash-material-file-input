@@ -173,3 +173,7 @@ It supports unit from Byte (b) to Yottabyte (Yb).
 <span>{{ 102400 | byteFormat:'Kb' }}</span>         <!-- Output: "100Mb" -->
 <span>{{ 104857600 | byteFormat:'b':'Kb' }}</span>  <!-- Output: "102400Kb" -->
 ```
+
+# Special thanks
+https://github.com/merlosy/ngx-material-file-input
+This project is inspired from this one.
