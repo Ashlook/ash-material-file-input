@@ -34,7 +34,7 @@ export class FileInputComponent extends _FileInputMixinBase
 
   static nextId = 0;
 
-  private _value: FileList;
+  private _value: FileList = null;
   private _required: boolean;
   private _disabled: boolean;
   private _placeholder: string;
@@ -48,16 +48,11 @@ export class FileInputComponent extends _FileInputMixinBase
 
   @Input()
   get value(): FileList | null {
-    if (this._value && this._value.length > 0) {
-      return this._value;
-    }
-    return null;
+    return this._value;
   }
   set value(files: FileList | null) {
-    if (files && files.length > 0) {
-      this._value = files;
-      this.stateChanges.next();
-    }
+    this._value = files && files.length > 0 ? files : null;
+    this.stateChanges.next();
   }
 
   @Input()
@@ -105,7 +100,7 @@ export class FileInputComponent extends _FileInputMixinBase
   }
 
   get empty(): boolean {
-    return !this.value || !(this.value.length > 0);
+    return !this.value;
   }
 
   get filenames(): string {
