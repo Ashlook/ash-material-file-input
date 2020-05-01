@@ -14,11 +14,13 @@
     white-space: nowrap;
     width: 100%;
     vertical-align: bottom;
+
+    &.ash-file-input-placeholder {
+        opacity: 0.5;
+    }
 }
 
-.ash-file-input-placeholder {
-    opacity: 0.5;
-}
+
 
 .ash-file-input-floating {
     opacity: 1;
