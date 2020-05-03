@@ -20,13 +20,13 @@
                         </mat-form-field>
                         <mat-form-field>
                             <mat-label>Drop a file in the container</mat-label>
-                            <ash-mat-file-input [formControl]="fc">
+                            <ash-mat-file-input [formControl]="fc" fileDrop multiple #fileinput>
                                 <label class="example-label">
                                     <mat-icon color="accent">publish</mat-icon>Drop here
                                 </label>
                             </ash-mat-file-input>
                         </mat-form-field>
-                        <mat-card class="test-drop mat-elevation-z3" ashDrop (fileDropped)="testDrop($event)">
+                        <mat-card class="test-drop mat-elevation-z3" ashDrop (fileDropped)="testDrop($event)" [class.error-drop]="fc.invalid" (click)="fileinput.open()">
                             <mat-icon color="accent">publish</mat-icon>
                             <span>Drop your file here</span>
                         </mat-card>

@@ -45,4 +45,8 @@
     &.ash-dragover {
         @include mat-elevation(6);
     }
+
+    &.error-drop {
+        color: red;
+    }
 }
