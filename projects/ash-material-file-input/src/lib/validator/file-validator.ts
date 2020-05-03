@@ -4,6 +4,30 @@ import { ValidatorFn, FormControl } from '@angular/forms';
 export class FileValidators {
 
   /**
+   * Function to control the total max size of the files
+   * @param maxSize The total max size
+   */
+  static maxFileSizeTotal(maxSize: number): ValidatorFn {
+    const fn = (control: FormControl): { [key: string]: any } | null => {
+      const files: FileList = control.value;
+      if (!files || files.length <= 0) {
+        return null;
+      }
+      const totalSize = Array.from(files).reduce((sum, file) => sum + file.size, 0);
+      if (totalSize > maxSize) {
+        return {
+          maxSizeTotal: {
+            max: maxSize,
+            size: totalSize,
+          }
+        };
+      }
+      return null;
+    };
+    return fn;
+  }
+
+  /**
    * Function to control the max size for each individual file
    * @param maxSize The max size in bytes of each file
    */
@@ -27,7 +51,6 @@ export class FileValidators {
       }
       return null;
     };
-
     return fn;
   }
 
@@ -57,7 +80,6 @@ export class FileValidators {
       }
       return null;
     };
-
     return fn;
   }
 
@@ -87,7 +109,6 @@ export class FileValidators {
       }
       return null;
     };
-
     return fn;
   }
 }
