@@ -67,6 +67,23 @@ control = new FormControl(null, FileValidators.acceptedExtensions('.jpg,.png'));
 ```
 control will be invalid if file extension is neither `.jpg` or `.png`.
 
+### maxFile
+
+Requires total number of file to be less or equal to maxFile
+
+**Parameters** :  
+`maxFile: number` - The total number of files accepted.
+
+**Error structure** :  
+```ts
+{
+    maxFile: {
+        maxFiles: number,       // Number of files accepted
+        currentFiles: number,   // Current number of files
+    }
+}
+```
+
 ### maxFileSize
 
 Requires each file to be lesser or equal to `maxSize`.
@@ -80,7 +97,24 @@ Requires each file to be lesser or equal to `maxSize`.
     maxSize: {
         max: number,        // Size max defined
         size: string,       // Size of the first file too big
-        filename: string,   // name of the file
+        filename: string,   // Name of the file
+    }
+}
+```
+
+### maxFileSizeTotal
+
+Requires the total files size to be lesser or equal to `maxSize`.
+
+**Parameters** :  
+`maxSize: number` - The total max size.
+
+**Error structure** :  
+```ts
+{
+     maxSizeTotal: {
+        max: number,        // Total size max defined
+        size: number,       // Total size of the files
     }
 }
 ```
@@ -175,5 +209,5 @@ It supports unit from Byte (b) to Yottabyte (Yb).
 ```
 
 # Special thanks
-https://github.com/merlosy/ngx-material-file-input
+https://github.com/merlosy/ngx-material-file-input  
 This project is inspired from this one.
