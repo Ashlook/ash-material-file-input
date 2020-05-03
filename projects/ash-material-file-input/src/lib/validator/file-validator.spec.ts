@@ -162,4 +162,40 @@ describe('FileValidators', () => {
     });
 
   });
+
+  describe('maxFile', () => {
+
+    it('should validate with no file', () => {
+      const control = new FormControl(undefined, [FileValidators.maxFile(10)]);
+      expect(control.value).toBe(null);
+      expect(control.valid).toBeTruthy();
+    });
+
+    it('should validate', () => {
+      const data = new FileListMock([fileJpg, fileTxt]);
+      const control = new FormControl(data, FileValidators.maxFile(3));
+      expect(control.value).toBe(data);
+      expect(control.valid).toBeTruthy();
+    });
+
+    it('should validate with file number equal', () => {
+      const data = new FileListMock([fileJpg, fileTxt, filePng]);
+      const control = new FormControl(data, FileValidators.maxFile(3));
+      expect(control.value).toBe(data);
+      expect(control.valid).toBeTruthy();
+    });
+
+    it('should not validate', () => {
+      const data = new FileListMock([fileJpg, fileTxt, filePng, fileTxt]);
+      const control = new FormControl(data, FileValidators.maxFile(3));
+      expect(control.value).toBe(data);
+      expect(control.invalid).toBeTruthy();
+      const maxSizeError = control.errors.maxFile;
+      expect(maxSizeError).toEqual({
+        maxFiles: 3,
+        currentFiles: 4,
+      });
+    });
+
+  });
 });
