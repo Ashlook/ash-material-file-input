@@ -4,6 +4,29 @@ import { ValidatorFn, FormControl } from '@angular/forms';
 export class FileValidators {
 
   /**
+   * Function to control the total number of files max
+   * @param maxFile max number of files
+   */
+  static maxFile(maxFiles: number): ValidatorFn {
+    const fn = (control: FormControl): { [key: string]: any } | null => {
+      const files: FileList = control.value;
+      if (!files || files.length <= 0) {
+        return null;
+      }
+      if (files.length > maxFiles) {
+        return {
+          maxFile: {
+            maxFiles,
+            currentFiles: files.length,
+          }
+        };
+      }
+      return null;
+    };
+    return fn;
+  }
+
+  /**
    * Function to control the total max size of the files
    * @param maxSize The total max size
    */
