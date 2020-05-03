@@ -12,7 +12,7 @@ export class NoMultipleDirective implements Validator {
   validate(control: FormControl) {
     if (control.value?.length > 1) {
       return {
-        multiple: {
+        multipleNotSet: {
           maxFiles: 1,
           currentFiles: control.value.length,
         }

@@ -58,5 +58,9 @@ describe('MultipleDirective', () => {
     const fileInput = fileInputDe.componentInstance as FileInputComponent;
     fileInput._fileChange(data);
     expect(host.fc.invalid).toBeTruthy();
+    expect(host.fc.errors.multipleNotSet).toEqual({
+      maxFiles: 1,
+      currentFiles: 2,
+    });
   });
 });
