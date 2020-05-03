@@ -26,7 +26,7 @@ export class FileInputComponent implements OnInit {
     </mat-form-field>`;
   }
 
-  fc = new FormControl(null, FileValidators.acceptedExtensions('.jpg,      .txt'));
+  fc = new FormControl(null, FileValidators.maxFileSizeTotal(2 * 1024 * 1024));
 
   constructor() { }
 
